@@ -1,0 +1,732 @@
+  [1m[36m (0.7ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.6ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateStores (20160221195607)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "stores" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "street" varchar, "city" varchar, "state" varchar, "zip" varchar, "phone" varchar, "latitude" float, "longtitude" float, "active" boolean, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160221195607"]]
+  [1m[35m (0.5ms)[0m  commit transaction
+Migrating to CreateAssignments (20160221195614)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "assignments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "store_id" integer, "employee_id" integer, "start_date" date, "end_date" date, "pay_level" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160221195614"]]
+  [1m[35m (0.5ms)[0m  commit transaction
+Migrating to CreateEmployees (20160221195622)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "employees" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar, "last_name" varchar, "ssn" varchar, "date_of_birth" date, "phone" varchar, "role" varchar, "active" boolean, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160221195622"]]
+  [1m[35m (0.5ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (1.4ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.8ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateStores (20160221195607)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "stores" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "street" varchar, "city" varchar, "state" varchar, "zip" varchar, "phone" varchar, "latitude" float, "longtitude" float, "active" boolean DEFAULT 1, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160221195607"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateAssignments (20160221195614)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "assignments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "store_id" integer, "employee_id" integer, "start_date" date, "end_date" date, "pay_level" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160221195614"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to CreateEmployees (20160221195622)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "employees" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar, "last_name" varchar, "ssn" varchar, "date_of_birth" date, "phone" varchar, "role" varchar, "active" boolean DEFAULT 1, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160221195622"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36m (2.0ms)[0m  [1mCREATE TABLE "assignments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "store_id" integer, "employee_id" integer, "start_date" date, "end_date" date, "pay_level" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.9ms)[0m  CREATE TABLE "employees" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar, "last_name" varchar, "ssn" varchar, "date_of_birth" date, "phone" varchar, "role" varchar, "active" boolean DEFAULT 't', "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (1.0ms)[0m  [1mCREATE TABLE "stores" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "street" varchar, "city" varchar, "state" varchar, "zip" varchar, "phone" varchar, "latitude" float, "longtitude" float, "active" boolean DEFAULT 't', "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.9ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.9ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160221195622')
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160221195607')[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160221195614')
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mStore Exists (0.4ms)[0m  SELECT  1 AS one FROM "stores" WHERE "stores"."name" = 'CMU Eats' LIMIT 1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "stores" ("name", "street", "city", "state", "zip", "phone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "CMU Eats"], ["street", "Forbes AVE"], ["city", "Pittsburgh"], ["state", "PA"], ["zip", "15289"], ["phone", "5332535231"], ["created_at", "2016-02-21 20:31:42.488246"], ["updated_at", "2016-02-21 20:31:42.488246"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mStore Exists (0.1ms)[0m  SELECT  1 AS one FROM "stores" WHERE "stores"."name" = 'Pitt Eats' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "stores" ("name", "street", "city", "state", "zip", "phone", "active", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Pitt Eats"], ["street", "Forbes AVE"], ["city", "Pittsburgh"], ["state", "PA"], ["zip", "15289"], ["phone", "6323221623"], ["active", "f"], ["created_at", "2016-02-21 20:31:42.492896"], ["updated_at", "2016-02-21 20:31:42.492896"]]
+  [1m[35m (0.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mStore Exists (0.1ms)[0m  SELECT  1 AS one FROM "stores" WHERE "stores"."name" = 'Ohio Eats' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "stores" ("name", "street", "city", "state", "zip", "phone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Ohio Eats"], ["street", "Wood Road"], ["city", "Poli"], ["state", "OH"], ["zip", "17234"], ["phone", "2312533255"], ["created_at", "2016-02-21 20:31:42.496754"], ["updated_at", "2016-02-21 20:31:42.496754"]]
+  [1m[35m (0.5ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mStore Exists (0.1ms)[0m  SELECT  1 AS one FROM "stores" WHERE "stores"."name" = 'WestV Eats' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mStore Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "stores" WHERE "stores"."name" = 'CMU Eats' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mStore Exists (0.2ms)[0m  SELECT  1 AS one FROM "stores" WHERE "stores"."name" = 'CMU Eats' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mStore Exists (0.1ms)[0m  SELECT  1 AS one FROM "stores" WHERE "stores"."name" = 'CMU Eats' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+
+
+Started GET "/stores" for ::1 at 2016-02-21 15:36:06 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StoresController#index as HTML
+  [1m[35mStore Load (0.2ms)[0m  SELECT "stores".* FROM "stores"
+  Rendered stores/index.html.erb within layouts/application (10.8ms)
+Completed 200 OK in 1333ms (Views: 1317.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/scaffolds.self-479f69bdd3fd1aff5b4cc0a484848b6b80b49752d0b588fe47f0981ad199c565.css?body=1" for ::1 at 2016-02-21 15:36:08 -0500
+  [1m[36mStore Load (0.2ms)[0m  [1mSELECT "stores".* FROM "stores" WHERE "stores"."active" = ?[0m  [["active", 1]]
+  [1m[35mStore Load (0.4ms)[0m  SELECT "stores".* FROM "stores" WHERE "stores"."active" = ?  ORDER BY "stores"."name" ASC  [["active", 1]]
+  [1m[36mStore Load (0.3ms)[0m  [1mSELECT "stores".* FROM "stores" WHERE "stores"."active" = ?  ORDER BY "stores"."name" ASC[0m  [["active", 0]]
+  [1m[35mStore Load (0.1ms)[0m  SELECT "stores".* FROM "stores" WHERE "stores"."active" = ?  ORDER BY "stores"."name" ASC  [["active", 1]]
+  [1m[36mStore Load (0.3ms)[0m  [1mSELECT "stores".* FROM "stores" WHERE "stores"."active" = ?  ORDER BY "stores"."name" ASC[0m  [["active", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "employees" ("first_name", "last_name", "ssn", "date_of_birth", "phone", "role", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["first_name", "Andrew"], ["last_name", "Wang"], ["ssn", "125521623"], ["date_of_birth", "1997-02-21"], ["phone", "1252631222"], ["role", "admin"], ["created_at", "2016-02-21 21:39:29.744437"], ["updated_at", "2016-02-21 21:39:29.744437"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employees" ("first_name", "last_name", "ssn", "date_of_birth", "phone", "role", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["first_name", "Kevin"], ["last_name", "Yin"], ["ssn", "523231522"], ["date_of_birth", "1993-02-21"], ["phone", "5235123222"], ["role", "manager"], ["created_at", "2016-02-21 21:39:29.751063"], ["updated_at", "2016-02-21 21:39:29.751063"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "employees" ("first_name", "last_name", "ssn", "date_of_birth", "phone", "role", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["first_name", "George"], ["last_name", "White"], ["ssn", "252231523"], ["date_of_birth", "2001-02-21"], ["phone", "3203469783"], ["role", "employee"], ["created_at", "2016-02-21 21:39:29.754754"], ["updated_at", "2016-02-21 21:39:29.754754"]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employees" ("first_name", "last_name", "ssn", "date_of_birth", "phone", "role", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["first_name", "Michael"], ["last_name", "Chin"], ["ssn", "213231523"], ["date_of_birth", "1986-02-21"], ["phone", "9749234013"], ["role", "admin"], ["created_at", "2016-02-21 21:39:29.758614"], ["updated_at", "2016-02-21 21:39:29.758614"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "employees" ("first_name", "last_name", "ssn", "date_of_birth", "phone", "role", "active", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["first_name", "Ben"], ["last_name", "Chu"], ["ssn", "677524839"], ["date_of_birth", "1997-02-21"], ["phone", "4329731063"], ["role", "manager"], ["active", "f"], ["created_at", "2016-02-21 21:39:29.763585"], ["updated_at", "2016-02-21 21:39:29.763585"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employees" ("first_name", "last_name", "ssn", "date_of_birth", "phone", "role", "active", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["first_name", "John"], ["last_name", "Han"], ["ssn", "294643279"], ["date_of_birth", "2001-02-21"], ["phone", "9472342734"], ["role", "employee"], ["active", "f"], ["created_at", "2016-02-21 21:39:29.767626"], ["updated_at", "2016-02-21 21:39:29.767626"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mStore Exists (0.1ms)[0m  SELECT  1 AS one FROM "stores" WHERE "stores"."name" = 'CMU Eats' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35mStore Load (0.2ms)[0m  SELECT "stores".* FROM "stores"
+  [1m[36mEmployee Load (0.3ms)[0m  [1mSELECT "employees".* FROM "employees"[0m
+  [1m[35mEmployee Load (0.3ms)[0m  SELECT "employees".* FROM "employees"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mStore Exists (0.2ms)[0m  SELECT  1 AS one FROM "stores" WHERE "stores"."name" = 'CMU Eats' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mStore Exists (0.2ms)[0m  SELECT  1 AS one FROM "stores" WHERE "stores"."name" = 'yolo' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "stores" ("name", "street", "city", "state", "zip", "phone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "yolo"], ["street", "Forbes AVE"], ["city", "Pittsburgh"], ["state", "PA"], ["zip", "15289"], ["phone", "5332535231"], ["created_at", "2016-02-21 21:47:58.901404"], ["updated_at", "2016-02-21 21:47:58.901404"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "employees" ("first_name", "last_name", "ssn", "date_of_birth", "phone", "role", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["first_name", "Andrew"], ["last_name", "Wang"], ["ssn", "125521623"], ["date_of_birth", "1997-02-21"], ["phone", "1252631222"], ["role", "admin"], ["created_at", "2016-02-21 21:48:25.944302"], ["updated_at", "2016-02-21 21:48:25.944302"]]
+  [1m[36m (1.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mStore Exists (0.5ms)[0m  SELECT  1 AS one FROM "stores" WHERE "stores"."name" = 'CMU Eats' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "employees" ("first_name", "last_name", "ssn", "date_of_birth", "phone", "role", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["first_name", "Andrew"], ["last_name", "Wang"], ["ssn", "125521623"], ["date_of_birth", "1997-02-21"], ["phone", "1252631222"], ["role", "admin"], ["created_at", "2016-02-21 22:32:12.347201"], ["updated_at", "2016-02-21 22:32:12.347201"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "employees" ("first_name", "last_name", "ssn", "date_of_birth", "phone", "role", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["first_name", "Andrew"], ["last_name", "Wang"], ["ssn", "125521623"], ["date_of_birth", "1997-02-21"], ["phone", "1252631222"], ["role", "admin"], ["created_at", "2016-02-21 22:33:04.231930"], ["updated_at", "2016-02-21 22:33:04.231930"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "employees" ("first_name", "last_name", "ssn", "date_of_birth", "phone", "role", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["first_name", "Andrew"], ["last_name", "Wang"], ["ssn", "125521623"], ["date_of_birth", "1997-02-21"], ["phone", "1252631222"], ["role", "admin"], ["created_at", "2016-02-21 22:33:39.877196"], ["updated_at", "2016-02-21 22:33:39.877196"]]
+  [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mStore Exists (1.3ms)[0m  [1mSELECT  1 AS one FROM "stores" WHERE "stores"."name" = 'ss' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "stores" ("name", "street", "city", "state", "zip", "phone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["name", "ss"], ["street", "Forbes AVE"], ["city", "Pittsburgh"], ["state", "PA"], ["zip", "15289"], ["phone", "5332535231"], ["created_at", "2016-02-21 22:35:36.207258"], ["updated_at", "2016-02-21 22:35:36.207258"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "employees" ("first_name", "last_name", "ssn", "date_of_birth", "phone", "role", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["first_name", "Andrew"], ["last_name", "Wang"], ["ssn", "125521623"], ["date_of_birth", "1997-02-21"], ["phone", "1252631222"], ["role", "admin"], ["created_at", "2016-02-21 22:35:53.190087"], ["updated_at", "2016-02-21 22:35:53.190087"]]
+  [1m[35m (3.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "employees" ("first_name", "last_name", "ssn", "date_of_birth", "phone", "role", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["first_name", "Andrew"], ["last_name", "Wang"], ["ssn", "125521623"], ["date_of_birth", "1997-02-21"], ["phone", "1252631222"], ["role", "admin"], ["created_at", "2016-02-21 22:36:23.920448"], ["updated_at", "2016-02-21 22:36:23.920448"]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+
+
+Started GET "/assignments" for ::1 at 2016-02-21 18:23:31 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by AssignmentsController#index as HTML
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms)
+
+SyntaxError (/Users/Andrew/Desktop/Andrew/67272_Lab/PhaseTwo/StoreManager/app/models/assignment.rb:48: syntax error, unexpected end-of-input, expecting keyword_end):
+  app/models/assignment.rb:48: syntax error, unexpected end-of-input, expecting keyword_end
+  app/controllers/assignments_controller.rb:7:in `index'
+
+
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.5ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (56.6ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (50.6ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (110.2ms)
+
+
+Started GET "/assignments" for ::1 at 2016-02-21 18:24:02 -0500
+Processing by AssignmentsController#index as HTML
+  [1m[35mAssignment Load (0.6ms)[0m  SELECT "assignments".* FROM "assignments"
+  Rendered assignments/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 233ms (Views: 223.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/assignments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-02-21 18:24:02 -0500
+
+
+Started GET "/assets/employees.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-02-21 18:24:02 -0500
+
+
+Started GET "/assets/scaffolds.self-479f69bdd3fd1aff5b4cc0a484848b6b80b49752d0b588fe47f0981ad199c565.css?body=1" for ::1 at 2016-02-21 18:24:02 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-02-21 18:24:02 -0500
+
+
+Started GET "/assets/stores.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-02-21 18:24:02 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-02-21 18:24:02 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-02-21 18:24:02 -0500
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-02-21 18:24:02 -0500
+
+
+Started GET "/assets/assignments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-02-21 18:24:02 -0500
+
+
+Started GET "/assets/employees.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-02-21 18:24:02 -0500
+
+
+Started GET "/assets/stores.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-02-21 18:24:02 -0500
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-02-21 18:24:02 -0500
+
+
+Started GET "/assignments/new" for ::1 at 2016-02-21 18:24:04 -0500
+Processing by AssignmentsController#new as HTML
+  Rendered assignments/_form.html.erb (17.2ms)
+  Rendered assignments/new.html.erb within layouts/application (19.6ms)
+Completed 200 OK in 45ms (Views: 40.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/assignments" for ::1 at 2016-02-21 18:24:10 -0500
+Processing by AssignmentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"A6WVb1IIqNTv7NpFVXxCzK74qsmJ+sOIg4s6Dnb5v6cAZPP2zSKhCUDWnrYkHdk/BS1BOBzxI5A6R10gECJTXA==", "assignment"=>{"store_id"=>"2", "employee_id"=>"-1", "start_date(1i)"=>"2016", "start_date(2i)"=>"2", "start_date(3i)"=>"21", "end_date(1i)"=>"", "end_date(2i)"=>"", "end_date(3i)"=>"", "pay_level"=>""}, "commit"=>"Create Assignment"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  Rendered assignments/_form.html.erb (6.7ms)
+  Rendered assignments/new.html.erb within layouts/application (8.5ms)
+Completed 200 OK in 37ms (Views: 32.6ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/assignments" for ::1 at 2016-02-21 18:24:28 -0500
+Processing by AssignmentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Xo5Z+HuqUBB4DVC/WU4uCG84vwgojRZQAinrizO9EBpdTz9h5IBZzdc3FEwoL7X7xO1U+b2G9ki75YylVWb84Q==", "assignment"=>{"store_id"=>"2", "employee_id"=>"1", "start_date(1i)"=>"2016", "start_date(2i)"=>"2", "start_date(3i)"=>"21", "end_date(1i)"=>"", "end_date(2i)"=>"", "end_date(3i)"=>"", "pay_level"=>"2"}, "commit"=>"Create Assignment"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mEmployee Load (0.5ms)[0m  SELECT "employees".* FROM "employees" WHERE "employees"."active" = ?  [["active", "t"]]
+  [1m[36mStore Load (0.4ms)[0m  [1mSELECT "stores".* FROM "stores" WHERE "stores"."active" = ?[0m  [["active", "t"]]
+  [1m[35m (0.1ms)[0m  rollback transaction
+  Rendered assignments/_form.html.erb (4.1ms)
+  Rendered assignments/new.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 50ms (Views: 24.7ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/assignments" for ::1 at 2016-02-21 18:24:30 -0500
+Processing by AssignmentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jd+ytkgyfZKLX8PYIpn1w3GiYHTjBEDkpG5iTRZiUlKOHtQv1xh0TyRlhytT+G4w2neLhXYPoPwdogVjcLm+qQ==", "assignment"=>{"store_id"=>"2", "employee_id"=>"1", "start_date(1i)"=>"2016", "start_date(2i)"=>"2", "start_date(3i)"=>"21", "end_date(1i)"=>"", "end_date(2i)"=>"", "end_date(3i)"=>"", "pay_level"=>"2"}, "commit"=>"Create Assignment"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mEmployee Load (0.1ms)[0m  SELECT "employees".* FROM "employees" WHERE "employees"."active" = ?  [["active", "t"]]
+  [1m[36mStore Load (0.0ms)[0m  [1mSELECT "stores".* FROM "stores" WHERE "stores"."active" = ?[0m  [["active", "t"]]
+  [1m[35m (0.1ms)[0m  rollback transaction
+  Rendered assignments/_form.html.erb (12.8ms)
+  Rendered assignments/new.html.erb within layouts/application (14.3ms)
+Completed 200 OK in 44ms (Views: 38.4ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/assignments" for ::1 at 2016-02-21 18:24:31 -0500
+Processing by AssignmentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3/m+q4KdPNSpevuI/JNkBGPiiw/RwctfsRhn5UVnfAHcONgyHbc1CQZAv3uN8v/3yDdg/kTKK0cI1ADLI7yQ+g==", "assignment"=>{"store_id"=>"2", "employee_id"=>"1", "start_date(1i)"=>"2016", "start_date(2i)"=>"2", "start_date(3i)"=>"21", "end_date(1i)"=>"", "end_date(2i)"=>"", "end_date(3i)"=>"", "pay_level"=>"2"}, "commit"=>"Create Assignment"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mEmployee Load (0.1ms)[0m  SELECT "employees".* FROM "employees" WHERE "employees"."active" = ?  [["active", "t"]]
+  [1m[36mStore Load (0.0ms)[0m  [1mSELECT "stores".* FROM "stores" WHERE "stores"."active" = ?[0m  [["active", "t"]]
+  [1m[35m (0.1ms)[0m  rollback transaction
+  Rendered assignments/_form.html.erb (5.6ms)
+  Rendered assignments/new.html.erb within layouts/application (6.7ms)
+Completed 200 OK in 36ms (Views: 29.9ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/assignments" for ::1 at 2016-02-21 18:24:32 -0500
+Processing by AssignmentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LXmxe4g3KTfZDzwEzU5CZszQz5LuKstjLpHcNVAtyowuuNfiFx0g6nY1ePe8L9mVZwUkY3shK3uXXbsbNvYmdw==", "assignment"=>{"store_id"=>"2", "employee_id"=>"1", "start_date(1i)"=>"2016", "start_date(2i)"=>"2", "start_date(3i)"=>"21", "end_date(1i)"=>"", "end_date(2i)"=>"", "end_date(3i)"=>"", "pay_level"=>"2"}, "commit"=>"Create Assignment"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mEmployee Load (0.1ms)[0m  SELECT "employees".* FROM "employees" WHERE "employees"."active" = ?  [["active", "t"]]
+  [1m[36mStore Load (0.0ms)[0m  [1mSELECT "stores".* FROM "stores" WHERE "stores"."active" = ?[0m  [["active", "t"]]
+  [1m[35m (0.1ms)[0m  rollback transaction
+  Rendered assignments/_form.html.erb (6.4ms)
+  Rendered assignments/new.html.erb within layouts/application (7.9ms)
+Completed 200 OK in 37ms (Views: 32.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assignments" for ::1 at 2016-02-21 18:24:35 -0500
+Processing by AssignmentsController#index as HTML
+  [1m[36mAssignment Load (0.1ms)[0m  [1mSELECT "assignments".* FROM "assignments"[0m
+  Rendered assignments/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 19ms (Views: 18.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assignments/new" for ::1 at 2016-02-21 18:24:37 -0500
+Processing by AssignmentsController#new as HTML
+  Rendered assignments/_form.html.erb (4.1ms)
+  Rendered assignments/new.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 34ms (Views: 33.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/assignments" for ::1 at 2016-02-21 18:24:38 -0500
+Processing by AssignmentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dg4ZleUk1ADtdGW4VSSEAbfwYDj3N0L6ckHzqIe//FwNz38Meg7d3UJOIUskRR/yHCWLyWI8ouLLjZSG4WQQpw==", "assignment"=>{"store_id"=>"", "employee_id"=>"", "start_date(1i)"=>"2016", "start_date(2i)"=>"2", "start_date(3i)"=>"21", "end_date(1i)"=>"", "end_date(2i)"=>"", "end_date(3i)"=>"", "pay_level"=>""}, "commit"=>"Create Assignment"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  Rendered assignments/_form.html.erb (5.6ms)
+  Rendered assignments/new.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 26ms (Views: 22.1ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/assignments" for ::1 at 2016-02-21 18:24:51 -0500
+Processing by AssignmentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"KiZHzhF6iQXBukljU6B+B2MHb5jb1AN7jlPPHVIDAwAp5yFXjlCA2G6ADZAiweX0yNKEaU7f42M3n6gzNNjv+w==", "assignment"=>{"store_id"=>"1", "employee_id"=>"1", "start_date(1i)"=>"2014", "start_date(2i)"=>"2", "start_date(3i)"=>"21", "end_date(1i)"=>"", "end_date(2i)"=>"", "end_date(3i)"=>"", "pay_level"=>"1"}, "commit"=>"Create Assignment"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mEmployee Load (0.1ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE "employees"."active" = ?[0m  [["active", "t"]]
+  [1m[35mStore Load (0.0ms)[0m  SELECT "stores".* FROM "stores" WHERE "stores"."active" = ?  [["active", "t"]]
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  Rendered assignments/_form.html.erb (4.1ms)
+  Rendered assignments/new.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 25ms (Views: 22.7ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/assignments" for ::1 at 2016-02-21 18:24:52 -0500
+Processing by AssignmentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"2sVaJrkm0/i5IbVrTOSr4TEVXoDaaibAPQ1l3pFd1kzZBDy/JgzaJRYb8Zg9hTASmsC1cU9hxtiEwQLw94Y6tw==", "assignment"=>{"store_id"=>"1", "employee_id"=>"1", "start_date(1i)"=>"2014", "start_date(2i)"=>"2", "start_date(3i)"=>"21", "end_date(1i)"=>"", "end_date(2i)"=>"", "end_date(3i)"=>"", "pay_level"=>"1"}, "commit"=>"Create Assignment"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mEmployee Load (0.1ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE "employees"."active" = ?[0m  [["active", "t"]]
+  [1m[35mStore Load (0.2ms)[0m  SELECT "stores".* FROM "stores" WHERE "stores"."active" = ?  [["active", "t"]]
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  Rendered assignments/_form.html.erb (3.3ms)
+  Rendered assignments/new.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 25ms (Views: 20.8ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/assignments" for ::1 at 2016-02-21 18:24:59 -0500
+Processing by AssignmentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZXIQPYzDN0+zNCcADkLUxzUnr+XQn7sKgKDchgP3dQhms3akE+k+khwOY/N/I080nvJEFEWUWxI5bLuoZSyZ8w==", "assignment"=>{"store_id"=>"1", "employee_id"=>"1", "start_date(1i)"=>"2014", "start_date(2i)"=>"2", "start_date(3i)"=>"21", "end_date(1i)"=>"", "end_date(2i)"=>"", "end_date(3i)"=>"", "pay_level"=>"1"}, "commit"=>"Create Assignment"}
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.6ms)[0m  [1mINSERT INTO "assignments" ("store_id", "employee_id", "pay_level", "start_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["store_id", 1], ["employee_id", 1], ["pay_level", 1], ["start_date", "2014-02-21"], ["created_at", "2016-02-21 23:24:59.697193"], ["updated_at", "2016-02-21 23:24:59.697193"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Redirected to http://localhost:3000/assignments/1
+Completed 302 Found in 14ms (ActiveRecord: 2.7ms)
+
+
+Started GET "/assignments/1" for ::1 at 2016-02-21 18:24:59 -0500
+Processing by AssignmentsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAssignment Load (0.3ms)[0m  [1mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered assignments/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 25ms (Views: 20.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assignments/1/edit" for ::1 at 2016-02-21 18:25:06 -0500
+Processing by AssignmentsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mAssignment Load (0.2ms)[0m  SELECT  "assignments".* FROM "assignments" WHERE "assignments"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered assignments/_form.html.erb (6.0ms)
+  Rendered assignments/edit.html.erb within layouts/application (8.6ms)
+Completed 200 OK in 33ms (Views: 30.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assignments/1" for ::1 at 2016-02-21 18:25:08 -0500
+Processing by AssignmentsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAssignment Load (0.1ms)[0m  [1mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered assignments/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 24ms (Views: 22.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assignments" for ::1 at 2016-02-21 18:25:09 -0500
+Processing by AssignmentsController#index as HTML
+  [1m[35mAssignment Load (0.1ms)[0m  SELECT "assignments".* FROM "assignments"
+  Rendered assignments/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 20ms (Views: 19.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/employees" for ::1 at 2016-02-21 18:34:18 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by EmployeesController#index as HTML
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees"
+  Rendered employees/index.html.erb within layouts/application (15.2ms)
+Completed 200 OK in 274ms (Views: 259.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/stores" for ::1 at 2016-02-21 18:34:36 -0500
+Processing by StoresController#index as HTML
+  [1m[36mStore Load (0.2ms)[0m  [1mSELECT "stores".* FROM "stores"[0m
+  Rendered stores/index.html.erb within layouts/application (11.4ms)
+Completed 200 OK in 51ms (Views: 44.7ms | ActiveRecord: 0.5ms)
+  [1m[36mEmployee Load (1.2ms)[0m  [1mSELECT "employees".* FROM "employees"[0m
+  [1m[35mAssignment Load (0.2ms)[0m  SELECT "assignments".* FROM "assignments" WHERE (end_date is NULL)
+  [1m[36mAssignment Load (0.4ms)[0m  [1mSELECT "assignments".* FROM "assignments" WHERE (end_date is NULL)[0m
+  [1m[35mAssignment Load (0.3ms)[0m  SELECT "assignments".* FROM "assignments" WHERE (end_date is NULL)
+  [1m[36mEmployee Load (0.4ms)[0m  [1mSELECT "employees".* FROM "employees"[0m
+  [1m[36mAssignment Load (1.3ms)[0m  [1mSELECT "assignments".* FROM "assignments" WHERE (end_date is NULL)[0m
+  [1m[35mAssignment Load (0.2ms)[0m  SELECT "assignments".* FROM "assignments" WHERE (end_date is NULL)
+
+
+Started GET "/stores" for ::1 at 2016-02-21 19:57:11 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StoresController#index as HTML
+  [1m[35mStore Load (0.4ms)[0m  SELECT "stores".* FROM "stores"
+  Rendered stores/index.html.erb within layouts/application (14.3ms)
+Completed 200 OK in 330ms (Views: 314.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assignments" for ::1 at 2016-02-21 19:57:13 -0500
+Processing by AssignmentsController#index as HTML
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.2ms)
+
+NameError (undefined local variable or method `before_message' for #<Class:0x007fda50bef7a8>):
+  app/models/assignment.rb:14:in `<class:Assignment>'
+  app/models/assignment.rb:1:in `<top (required)>'
+  app/controllers/assignments_controller.rb:7:in `index'
+
+
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.4ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (54.9ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (54.8ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (117.6ms)
+
+
+Started GET "/assignments" for ::1 at 2016-02-21 19:59:25 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by AssignmentsController#index as HTML
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.2ms)
+
+NameError (undefined local variable or method `start_date' for #<Class:0x007f91bbf12a58>):
+  app/models/assignment.rb:15:in `<class:Assignment>'
+  app/models/assignment.rb:1:in `<top (required)>'
+  app/controllers/assignments_controller.rb:7:in `index'
+
+
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.9ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (54.0ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (48.1ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (103.2ms)
+
+
+Started GET "/assignments" for ::1 at 2016-02-21 19:59:36 -0500
+Processing by AssignmentsController#index as HTML
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.5ms)
+
+NameError (undefined local variable or method `start_date' for #<Class:0x007f91bbec10e0>):
+  app/models/assignment.rb:15:in `<class:Assignment>'
+  app/models/assignment.rb:1:in `<top (required)>'
+  app/controllers/assignments_controller.rb:7:in `index'
+
+
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.8ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (47.7ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (38.6ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (86.6ms)
+
+
+Started GET "/assignments" for ::1 at 2016-02-21 19:59:59 -0500
+Processing by AssignmentsController#index as HTML
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+SyntaxError (/Users/Andrew/Desktop/Andrew/67272_Lab/PhaseTwo/StoreManager/app/models/assignment.rb:15: syntax error, unexpected ':', expecting keyword_end
+...s_date :end_date, :on_or_after: start_date, :on_or_before: D...
+...                               ^
+/Users/Andrew/Desktop/Andrew/67272_Lab/PhaseTwo/StoreManager/app/models/assignment.rb:15: syntax error, unexpected ':', expecting :: or '[' or '.'
+...ter: start_date, :on_or_before: Date.today
+...                               ^):
+  app/models/assignment.rb:15: syntax error, unexpected ':', expecting keyword_end
+  app/models/assignment.rb:15: syntax error, unexpected ':', expecting :: or '[' or '.'
+  app/controllers/assignments_controller.rb:7:in `index'
+
+
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.2ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (46.1ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (41.2ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (91.9ms)
+
+
+Started GET "/assignments" for ::1 at 2016-02-21 20:00:28 -0500
+Processing by AssignmentsController#index as HTML
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+SyntaxError (/Users/Andrew/Desktop/Andrew/67272_Lab/PhaseTwo/StoreManager/app/models/assignment.rb:15: syntax error, unexpected ':', expecting keyword_end
+...s_date :end_date, :on_or_after: start_date, :on_or_before =>...
+...                               ^
+/Users/Andrew/Desktop/Andrew/67272_Lab/PhaseTwo/StoreManager/app/models/assignment.rb:15: syntax error, unexpected =>, expecting :: or '[' or '.'
+...r: start_date, :on_or_before => lambda { Date.current }
+...                               ^):
+  app/models/assignment.rb:15: syntax error, unexpected ':', expecting keyword_end
+  app/models/assignment.rb:15: syntax error, unexpected =>, expecting :: or '[' or '.'
+  app/controllers/assignments_controller.rb:7:in `index'
+
+
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.6ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (54.1ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.9ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (40.1ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/Andrew/.rvm/gems/ruby-2.2.4/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (89.9ms)
+
+
+Started GET "/assignments" for ::1 at 2016-02-21 20:00:46 -0500
+Processing by AssignmentsController#index as HTML
+  [1m[35mAssignment Load (0.5ms)[0m  SELECT "assignments".* FROM "assignments"
+  Rendered assignments/index.html.erb within layouts/application (8.5ms)
+Completed 200 OK in 247ms (Views: 236.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/employees.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-02-21 20:00:46 -0500
+
+
+Started GET "/assets/assignments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-02-21 20:00:46 -0500
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-02-21 20:00:46 -0500
+
+
+Started GET "/assets/stores.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-02-21 20:00:46 -0500
+
+
+Started GET "/assets/scaffolds.self-479f69bdd3fd1aff5b4cc0a484848b6b80b49752d0b588fe47f0981ad199c565.css?body=1" for ::1 at 2016-02-21 20:00:46 -0500
+
+
+Started GET "/assets/assignments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-02-21 20:00:46 -0500
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-02-21 20:00:46 -0500
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-02-21 20:00:46 -0500
+
+
+Started GET "/assets/stores.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-02-21 20:00:46 -0500
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-02-21 20:00:46 -0500
+
+
+Started GET "/assets/employees.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-02-21 20:00:46 -0500
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-02-21 20:00:46 -0500
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+
+
+Started GET "/stores" for ::1 at 2016-02-21 20:16:24 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StoresController#index as HTML
+  [1m[35mStore Load (0.5ms)[0m  SELECT "stores".* FROM "stores"
+  Rendered stores/index.html.erb within layouts/application (15.9ms)
+Completed 200 OK in 346ms (Views: 329.7ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assignments" for ::1 at 2016-02-21 20:16:26 -0500
+Processing by AssignmentsController#index as HTML
+  [1m[36mAssignment Load (0.4ms)[0m  [1mSELECT "assignments".* FROM "assignments"[0m
+  Rendered assignments/index.html.erb within layouts/application (8.4ms)
+Completed 200 OK in 43ms (Views: 35.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assignments/new" for ::1 at 2016-02-21 20:16:30 -0500
+Processing by AssignmentsController#new as HTML
+  Rendered assignments/_form.html.erb (45.7ms)
+  Rendered assignments/new.html.erb within layouts/application (60.5ms)
+Completed 200 OK in 96ms (Views: 94.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/assignments" for ::1 at 2016-02-21 20:16:35 -0500
+Processing by AssignmentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"EFd8tJ9L7aSCjzgcvy+RQVBpri9HWPTelYM9As7yiewTlhotAGHkeS21fO/OTgqy+7xF3tJTFMYsT1osqCllFw==", "assignment"=>{"store_id"=>"-1", "employee_id"=>"-1", "start_date(1i)"=>"2016", "start_date(2i)"=>"2", "start_date(3i)"=>"22", "end_date(1i)"=>"", "end_date(2i)"=>"", "end_date(3i)"=>"", "pay_level"=>""}, "commit"=>"Create Assignment"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  Rendered assignments/_form.html.erb (8.4ms)
+  Rendered assignments/new.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 38ms (Views: 30.5ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/assignments" for ::1 at 2016-02-21 20:16:50 -0500
+Processing by AssignmentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"IYtLje8fLJpQZQgdNzSz2l3HtMc32joZVmf/bf4mG7wiSi0UcDUlR/9fTO5GVSgp9hJfNqLR2gHvq5hDmP33Rw==", "assignment"=>{"store_id"=>"1", "employee_id"=>"1", "start_date(1i)"=>"2016", "start_date(2i)"=>"2", "start_date(3i)"=>"22", "end_date(1i)"=>"2012", "end_date(2i)"=>"2", "end_date(3i)"=>"3", "pay_level"=>"1"}, "commit"=>"Create Assignment"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "assignments" ("store_id", "employee_id", "pay_level", "start_date", "end_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["store_id", 1], ["employee_id", 1], ["pay_level", 1], ["start_date", "2016-02-22"], ["end_date", "2012-02-03"], ["created_at", "2016-02-22 01:16:50.031645"], ["updated_at", "2016-02-22 01:16:50.031645"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+Redirected to http://localhost:3000/assignments/2
+Completed 302 Found in 11ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/assignments/2" for ::1 at 2016-02-21 20:16:50 -0500
+Processing by AssignmentsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAssignment Load (0.2ms)[0m  [1mSELECT  "assignments".* FROM "assignments" WHERE "assignments"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered assignments/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 29ms (Views: 20.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assignments" for ::1 at 2016-02-21 20:16:55 -0500
+Processing by AssignmentsController#index as HTML
+  [1m[35mAssignment Load (0.1ms)[0m  SELECT "assignments".* FROM "assignments"
+  Rendered assignments/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 21ms (Views: 20.7ms | ActiveRecord: 0.1ms)
+  [1m[36mEmployee Load (1.4ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE "employees"."active" = ?[0m  [["active", "t"]]
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE "employees"."active" = ?  [["active", "t"]]
+  [1m[36mEmployee Load (0.3ms)[0m  [1mSELECT "employees".* FROM "employees"[0m
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE "employees"."active" = ?  [["active", "f"]]
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE "employees"."active" = ?[0m  [["active", "t"]]
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE "employees"."active" = ?  [["active", "t"]]
+  [1m[36mStore Load (1.3ms)[0m  [1mSELECT "stores".* FROM "stores" WHERE "stores"."active" = ?[0m  [["active", "t"]]
+  [1m[35mStore Load (0.2ms)[0m  SELECT "stores".* FROM "stores" WHERE "stores"."active" = ?  [["active", "f"]]
+  [1m[36mStore Load (0.3ms)[0m  [1mSELECT "stores".* FROM "stores"[0m
+  [1m[35mStore Load (0.3ms)[0m  SELECT "stores".* FROM "stores"
+  [1m[36mStore Load (0.2ms)[0m  [1mSELECT "stores".* FROM "stores" WHERE "stores"."active" = ?[0m  [["active", "t"]]
+  [1m[35mStore Load (0.3ms)[0m  SELECT "stores".* FROM "stores" WHERE "stores"."active" = ? AND "stores"."active" = ?  [["active", "t"], ["active", "f"]]
+  [1m[36mStore Load (0.2ms)[0m  [1mSELECT "stores".* FROM "stores" WHERE "stores"."active" = ? AND "stores"."active" = ?[0m  [["active", "f"], ["active", "t"]]
+  [1m[35mStore Load (0.2ms)[0m  SELECT "stores".* FROM "stores" WHERE "stores"."active" = ?  [["active", "f"]]
+  [1m[36mStore Load (0.3ms)[0m  [1mSELECT "stores".* FROM "stores"  ORDER BY "stores"."name" ASC[0m
+  [1m[35mStore Load (0.2ms)[0m  SELECT "stores".* FROM "stores" WHERE "stores"."active" = ?  [["active", "t"]]
+  [1m[36mStore Load (0.2ms)[0m  [1mSELECT "stores".* FROM "stores" WHERE "stores"."active" = ?[0m  [["active", "f"]]
+  [1m[35mStore Load (0.2ms)[0m  SELECT "stores".* FROM "stores" WHERE "stores"."active" = ?  [["active", "f"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mStore Exists (0.1ms)[0m  SELECT  1 AS one FROM "stores" WHERE "stores"."name" = 'WestV Eats' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "stores" ("name", "street", "city", "state", "zip", "phone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "WestV Eats"], ["street", "Wow Ave"], ["city", "Bush"], ["state", "WV"], ["zip", "09252"], ["phone", "1523551235"], ["created_at", "2016-02-22 02:00:54.607898"], ["updated_at", "2016-02-22 02:00:54.607898"]]
+  [1m[35m (1.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "employees" ("first_name", "last_name", "ssn", "date_of_birth", "phone", "role", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["first_name", "Kevin"], ["last_name", "Yin"], ["ssn", "523231522"], ["date_of_birth", "1993-02-22"], ["phone", "5235123222"], ["role", "manager"], ["created_at", "2016-02-22 02:01:17.428207"], ["updated_at", "2016-02-22 02:01:17.428207"]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mAssignment Load (0.1ms)[0m  [1mSELECT "assignments".* FROM "assignments" WHERE (end_date is NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "assignments" ("store_id", "employee_id", "start_date", "pay_level", "end_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["store_id", 6], ["employee_id", 13], ["start_date", "2015-10-22"], ["pay_level", 6], ["end_date", "2016-02-21"], ["created_at", "2016-02-22 02:01:25.425012"], ["updated_at", "2016-02-22 02:01:25.425012"]]
+  [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE "employees"."active" = ?  [["active", "f"]]
+  [1m[36mStore Load (0.2ms)[0m  [1mSELECT "stores".* FROM "stores" WHERE "stores"."active" = ?[0m  [["active", "f"]]
+  [1m[35mEmployee Load (0.3ms)[0m  SELECT "employees".* FROM "employees" WHERE "employees"."active" = ?  [["active", "f"]]
+  [1m[36mStore Load (0.2ms)[0m  [1mSELECT "stores".* FROM "stores" WHERE "stores"."active" = ?[0m  [["active", "f"]]
+  [1m[35mEmployee Load (0.3ms)[0m  SELECT "employees".* FROM "employees" WHERE "employees"."active" = ?  [["active", "f"]]
+  [1m[36mStore Load (0.2ms)[0m  [1mSELECT "stores".* FROM "stores" WHERE "stores"."active" = ?[0m  [["active", "f"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mStore Exists (0.1ms)[0m  SELECT  1 AS one FROM "stores" WHERE "stores"."name" = 'WestV Eats' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mStore Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "stores" WHERE "stores"."name" = 'WestV Eas' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "stores" ("name", "street", "city", "state", "zip", "phone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["name", "WestV Eas"], ["street", "Wow Ave"], ["city", "Bush"], ["state", "WV"], ["zip", "09252"], ["phone", "1523551235"], ["created_at", "2016-02-22 02:04:03.242539"], ["updated_at", "2016-02-22 02:04:03.242539"]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "employees" ("first_name", "last_name", "ssn", "date_of_birth", "phone", "role", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["first_name", "Kevin"], ["last_name", "Yin"], ["ssn", "523231522"], ["date_of_birth", "1993-02-22"], ["phone", "5235123222"], ["role", "manager"], ["created_at", "2016-02-22 02:04:18.977579"], ["updated_at", "2016-02-22 02:04:18.977579"]]
+  [1m[35m (1.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mAssignment Load (0.2ms)[0m  SELECT "assignments".* FROM "assignments" WHERE (end_date is NULL)
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "assignments" ("store_id", "employee_id", "start_date", "pay_level", "end_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["store_id", 7], ["employee_id", 14], ["start_date", "2015-10-22"], ["pay_level", 6], ["end_date", "2016-02-21"], ["created_at", "2016-02-22 02:04:25.575656"], ["updated_at", "2016-02-22 02:04:25.575656"]]
+  [1m[35m (1.4ms)[0m  commit transaction
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE "employees"."active" = ?[0m  [["active", "f"]]
+  [1m[35mStore Load (0.2ms)[0m  SELECT "stores".* FROM "stores" WHERE "stores"."active" = ?  [["active", "f"]]
+  [1m[36mEmployee Load (0.3ms)[0m  [1mSELECT "employees".* FROM "employees" WHERE "employees"."active" = ?[0m  [["active", "f"]]
+  [1m[35mStore Load (0.2ms)[0m  SELECT "stores".* FROM "stores" WHERE "stores"."active" = ?  [["active", "f"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "employees" ("first_name", "last_name", "ssn", "date_of_birth", "phone", "role", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["first_name", "Kevin"], ["last_name", "Yin"], ["ssn", "523231522"], ["date_of_birth", "1993-02-22"], ["phone", "5235123222"], ["role", "manager"], ["created_at", "2016-02-22 02:06:30.692550"], ["updated_at", "2016-02-22 02:06:30.692550"]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mStore Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "stores" WHERE "stores"."name" = 'WestV Ea' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "stores" ("name", "street", "city", "state", "zip", "phone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["name", "WestV Ea"], ["street", "Wow Ave"], ["city", "Bush"], ["state", "WV"], ["zip", "09252"], ["phone", "1523551235"], ["created_at", "2016-02-22 02:06:43.378244"], ["updated_at", "2016-02-22 02:06:43.378244"]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mAssignment Load (0.1ms)[0m  [1mSELECT "assignments".* FROM "assignments" WHERE (end_date is NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "assignments" ("store_id", "employee_id", "start_date", "pay_level", "end_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["store_id", 8], ["employee_id", 15], ["start_date", "2015-10-22"], ["pay_level", 6], ["end_date", "2016-02-21"], ["created_at", "2016-02-22 02:06:52.547654"], ["updated_at", "2016-02-22 02:06:52.547654"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE "employees"."active" = ?  [["active", "f"]]
+  [1m[36mStore Load (0.1ms)[0m  [1mSELECT "stores".* FROM "stores" WHERE "stores"."active" = ?[0m  [["active", "f"]]
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees" WHERE "employees"."active" = ?  [["active", "f"]]
